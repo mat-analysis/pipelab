@@ -1,0 +1,14 @@
+# PipeLab runtime dependencies
+# Copyright (c) 2026 Tarlis Portela <tarlis@tarlis.com.br>
+# Licensed under the Apache License, Version 2.0.
+
+fastapi>=0.100
+uvicorn[standard]>=0.20
+typer>=0.9
+mlflow>=2.0
+pydantic>=2.0
+scikit-learn>=1.0
+pandas>=1.5
+python-multipart>=0.0.5
+httpx>=0.24
+pyyaml>=6.0

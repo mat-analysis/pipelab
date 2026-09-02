@@ -1,0 +1,29 @@
+name: project_01
+description: Test Project
+datasets:
+- name: iris-80_20
+  description: ''
+  data_service: RegisterDatasetIris
+  preparation_method: TrainTestSplit
+  preparation_params:
+    test_size: 0.2
+    random_state: 42
+experiments:
+- name: 2026-09-02-18-59-08_iris-80_20_Train_XB_SVM_DT
+  description: 'Pipeline: iris-80_20 + Train_XB_SVM_DT'
+deployments:
+- model_name: iris-cls-v1
+  version: '1'
+  alias: production
+  deploy_service: MLflowServeProvider
+  port: 5001
+services:
+  Train_XB_SVM_DT:
+    label: XB_SVM_DT
+    description: Train XGBoost, SVM, and Decision Tree, log to MLflow.
+    experiments:
+    - 2026-09-02-18-59-08_iris-80_20_Train_XB_SVM_DT
+  TrainEvaluateStep:
+    label: ''
+    description: Train RandomForest with the prepared data, log to MLflow.
+    experiments: []

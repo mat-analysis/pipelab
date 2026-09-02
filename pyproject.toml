@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pipelab"
+version = "0.1.0"
+description = "PipeLab — ML Pipeline Management Platform with MLflow, FastAPI and React"
+readme = "README.md"
+authors = [
+    { name = "Tarlis Portela" }
+]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+keywords = ["machine-learning", "mlops", "pipelines", "mlflow", "experiment-tracking", "model-registry"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Framework :: FastAPI",
+]
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "typer",
+    "mlflow",
+    "pydantic",
+    "scikit-learn",
+    "pandas",
+    "python-multipart",
+    "httpx",
+    "pyyaml",
+]
+
+[project.scripts]
+pipelab = "pipelab.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["pipelab*"]
+exclude = ["pipelab.frontend*"]
+
+[tool.setuptools.package-data]
+pipelab = ["static/**/*"]
